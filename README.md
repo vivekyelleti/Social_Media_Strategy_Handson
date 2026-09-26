@@ -35,23 +35,14 @@ After completing the demonstration, participants should be able to:
 - Detect a recent increase in negative conversation.
 - Prepare an executive decision brief containing signal, evidence, business meaning, action, ownership, and measurement.
 
-## 3. Files in the Demonstration Package
 
-| File | Purpose |
-|---|---|
-| `social_posts.csv` | Participant dataset used during the live demonstration. |
-| `social_posts_instructor_key.csv` | Instructor-only dataset containing hidden synthetic ground-truth labels. Optional for the main demonstration. |
-| `social_media_strategy_handson_corrected.py` | Corrected, agenda-aligned Python script. |
-| `README_Social_Media_Strategy.md` | Problem statement, column metadata, setup instructions, and facilitation notes. |
-| `social_demo_outputs/` | Folder created by the Python script for charts, scored data, summaries, and the decision brief. |
-
-## 4. Dataset Overview
+## 3. Dataset Overview
 
 The participant dataset contains **1,600 synthetic social-media-style records**. Each row represents one synthetic post or comment. The data are designed for teaching and demonstration; they do not represent real customers, accounts, brands, or platform users.
 
 The dataset includes multiple platforms, products, campaigns, markets, languages, audience types, engagement measures, and text patterns. It also includes deliberately challenging language such as sarcasm, slang, Hinglish, and mixed sentiment so that participants can evaluate the limitations of automated sentiment analysis.
 
-## 5. Metadata: Participant Dataset Columns
+## 4. Metadata: Participant Dataset Columns
 
 ### `post_id`
 - **Type:** Text/string
@@ -148,49 +139,9 @@ The dataset includes multiple platforms, products, campaigns, markets, languages
 - **Use:** Source-context comparison.
 - **Caution:** Verification is not a credibility, accuracy, expertise, or importance score.
 
-## 6. Instructor-Key Metadata
-
-The instructor-key file contains all participant columns plus the following hidden fields. Do not distribute this file before the participant exercise if discovery and validation are part of the learning design.
-
-### `theme_truth`
-- **Type:** Categorical text
-- **Description:** Synthetic theme used when generating the post.
-- **Possible values:** delivery, price, quality, service, usability, and features.
-- **Use:** Compare discovered TF-IDF terms or theme rules with the embedded theme.
-
-### `intent_truth`
-- **Type:** Categorical text
-- **Description:** Synthetic communication intent.
-- **Examples:** complain, seek resolution, warn, recommend, praise, compare, ask question, and seek information.
-- **Use:** Demonstrate that sentiment alone does not reveal intent.
-
-### `sentiment_truth`
-- **Type:** Categorical text
-- **Description:** Synthetic sentiment intended during data generation.
-- **Possible values:** Positive, Neutral, Negative, and Mixed.
-- **Use:** Compare VADER predictions with the intended label.
-- **Caution:** VADER's simple demonstration output uses three classes; Mixed is intentionally used to demonstrate the limits of single-label sentiment.
-
-### `urgency_truth`
-- **Type:** Categorical text
-- **Description:** Synthetic urgency classification.
-- **Possible values:** Low, Medium, and High.
-- **Use:** Discuss escalation and prioritization beyond sentiment polarity.
-
-### `model_challenge`
-- **Type:** Categorical text
-- **Description:** Indicates whether the post was deliberately generated as a model-challenge case.
-- **Possible values:** clear, sarcasm, mixed, and slang.
-- **Use:** Evaluate model accuracy by language challenge.
-
-### `spike_flag`
-- **Type:** Binary integer
-- **Description:** Synthetic indicator for posts associated with the embedded recent campaign issue.
-- **Possible values:** `1` for flagged spike-window posts and `0` otherwise.
-- **Use:** Validate whether the trend and campaign analysis identifies the intended event.
 
 
-## 8. Software Requirements
+## 5. Software Requirements
 
 Use Python 3 with the following libraries:
 
@@ -215,20 +166,7 @@ For Google Colab:
 !pip install pandas numpy matplotlib seaborn scikit-learn vaderSentiment
 ```
 
-## 9. Recommended Folder Structure
-
-```text
-social_media_strategy_demo/
-├── social_media_strategy_handson_corrected.py
-├── social_posts.csv
-├── social_posts_instructor_key.csv
-├── README_Social_Media_Strategy.md
-└── social_demo_outputs/
-```
-
-The `social_demo_outputs` directory is created automatically if it does not already exist.
-
-## 10. Running the Demonstration
+## 6. Running the Demonstration
 
 ### Local Python
 
@@ -246,7 +184,7 @@ Upload the Python file and the participant CSV to the Colab session, then run:
 
 If the instructor-key file is also uploaded, the optional model-validation section will run automatically. If it is absent, the main participant demonstration will still run.
 
-## 11. Outputs Produced
+## 7. Outputs Produced
 
 The script can create the following files in `social_demo_outputs/`:
 
@@ -265,7 +203,7 @@ The script can create the following files in `social_demo_outputs/`:
 | `executive_decision_brief.txt` | Automatically generated signal-to-action summary. |
 | `instructor_model_evaluation.csv` | Optional comparison of model output with hidden synthetic labels. |
 
-## 12. Analytical Notes
+## 8. Analytical Notes
 
 ### VADER sentiment
 
